@@ -44,6 +44,20 @@ class Partida:
                 fichas.remove(ficha)
 
         return "¡Las fichas se repartieron!"
+    
+    def cambio_de_turno(self):
+        jugador_en_turno = self.turnos.popleft()
+        self.turnos.append(jugador_en_turno)
+        return jugador_en_turno
+    
+    def verificar_ganador(self):
+        for jugador in self.jugadores:
+            if len(jugador.fichas) == 0:
+                return jugador
+        return None    
 
     def __str__(self):
         return f"Soy una partida con {len(self.jugadores)} jugadores y {len(self.fichas)} fichas"
+    
+    
+

@@ -60,3 +60,6 @@ if __name__ == "__main__":
     for i in range(len(partida.turnos)):
         print(f"{i + 1}. {partida.turnos[i].nombre}")
         sleep(1.5)
+
+    while partida.verificar_ganador() == None:
+        jugador_en_turno = partida.cambio_de_turno()

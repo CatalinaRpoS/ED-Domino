@@ -12,8 +12,5 @@ class Bot:
     def poner_ficha(self, ficha: Ficha):
         pass
 
-    def pasar_turno(self):
-        pass
-
     def __str__(self):
         return f"¡Hola! Soy {self.nombre} y tengo {len(self.fichas)} fichas"
