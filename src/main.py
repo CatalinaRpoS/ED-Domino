@@ -61,5 +61,11 @@ if __name__ == "__main__":
         print(f"{i + 1}. {partida.turnos[i].nombre}")
         sleep(1.5)
 
+    jugador_inicial = partida.turnos.popleft()
+    doble_seis = jugador_inicial.fichas.pop()
+    partida.turnos.append(jugador_inicial)
+    partida.colocadas.append(doble_seis)
+    
     while partida.verificar_ganador() == None:
         jugador_en_turno = partida.cambio_de_turno()
+        jugador_en_turno.poner_ficha = 
