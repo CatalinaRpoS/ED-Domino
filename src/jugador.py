@@ -25,7 +25,7 @@ class Jugador:
         try:
             ultima_ficha = self.partida.colocadas.pop()
             self.partida.colocadas.append(ultima_ficha)
-            
+
             primera_ficha = self.partida.colocadas.popleft()
             self.partida.colocadas.appendleft(primera_ficha)
 
@@ -57,13 +57,6 @@ class Jugador:
             except:
                 pass
 
-            print(ficha_1 )
-            print(ficha_2 )
-            print(ultima_ficha_1 )
-            print(ultima_ficha_2 )
-            print(primera_ficha_1 )
-            print(primera_ficha_2 )
-
             if ficha_1 == ultima_ficha_1 or ficha_1 == ultima_ficha_2:
                 break
             
@@ -75,6 +68,9 @@ class Jugador:
             
             elif ficha_2 == primera_ficha_1 or ficha_2 == primera_ficha_2:
                 break
+
+            else:
+                print("La ficha es invalida, por favor ingresa un valor valido :D, atontao")
                     
 
         while True:
