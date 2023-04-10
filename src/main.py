@@ -3,9 +3,15 @@ from partida import Partida
 from jugador import Jugador
 from bot import Bot
 from time import sleep
+from pyfiglet import figlet_format
 
 if __name__ == "__main__":
 
+    # Bienvenida al juego para los jugadores
+    bienvenida = figlet_format("Super Domino", font="colossal")
+    print(bienvenida)
+    sleep(2)
+    
     # Creación de la partida
     partida = Partida(list(), list())
 
@@ -60,16 +66,17 @@ if __name__ == "__main__":
     for i in range(len(partida.turnos)):
         print(f"{i + 1}. {partida.turnos[i].nombre}")
         sleep(1)
-    
+
     print("")
 
     jugador_inicial = partida.turnos.popleft()
+    print(f"{jugador_inicial.nombre} puso el doble seis\n")
     doble_seis = jugador_inicial.fichas.pop()
     partida.turnos.append(jugador_inicial)
     partida.colocadas.append(doble_seis)
-    
-    while partida.verificar_ganador() == None:
-        
+
+    while partida.verificar_ganador() is None:
         partida.imprimir_colocadas()
         jugador_en_turno = partida.cambio_de_turno()
+        print(f"Turno de {jugador_en_turno.nombre}\n")
         jugador_en_turno.poner_ficha()
