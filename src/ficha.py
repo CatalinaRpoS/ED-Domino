@@ -6,4 +6,4 @@ class Ficha:
         self.id = id_ficha
 
     def __str__(self):
-        return f"{self.cara[0]} | {self.cara[1]}"
+        return f"|{self.cara[0]} | {self.cara[1]}|"

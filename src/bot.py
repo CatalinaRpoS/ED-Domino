@@ -9,7 +9,7 @@ class Bot:
         self.fichas = fichas
         self.partida = partida
 
-    def poner_ficha(self, ficha: Ficha):
+    def poner_ficha(self):
         pass
 
     def __str__(self):

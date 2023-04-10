@@ -10,6 +10,7 @@ class Partida:
         self.colocadas = deque()
         self.turnos = deque()
 
+
     def asignar_turnos(self):
         jugadores = self.jugadores
         for jugador in self.jugadores:
@@ -35,6 +36,7 @@ class Partida:
                     maximo = medio - 1
         return "Los turnos no pudieron asignarse"
 
+
     def asignar_fichas(self):
         fichas = self.fichas
         for jugador in self.jugadores:
@@ -44,17 +46,32 @@ class Partida:
                 fichas.remove(ficha)
 
         return "¡Las fichas se repartieron!"
-    
+
+
     def cambio_de_turno(self):
         jugador_en_turno = self.turnos.popleft()
         self.turnos.append(jugador_en_turno)
         return jugador_en_turno
-    
+
+ 
     def verificar_ganador(self):
         for jugador in self.jugadores:
             if len(jugador.fichas) == 0:
                 return jugador
-        return None    
+        return None
+
+
+    def imprimir_colocadas(self):
+        
+        print("Fichas en juego:")
+
+        for ficha in self.colocadas:
+            print(ficha, end= "  ")
+        
+        print("")
+        print("#--------------------------------------------------")
+        print("")
+
 
     def __str__(self):
         return f"Soy una partida con {len(self.jugadores)} jugadores y {len(self.fichas)} fichas"
