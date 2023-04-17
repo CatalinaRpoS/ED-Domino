@@ -8,4 +8,4 @@ class Ficha:
         self.cara[0], self.cara[1] = self.cara[1], self.cara[0]
 
     def __str__(self):
-        return f"|{self.cara[0]} | {self.cara[1]}| , ID = {self.id}"
+        return f"|{self.cara[0]} | {self.cara[1]}|"

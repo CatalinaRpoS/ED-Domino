@@ -22,9 +22,6 @@ if __name__ == "__main__":
             partida.fichas.append(Ficha(str(i), str(j), contador))
             contador += 1
 
-    for i in partida.fichas:
-        print(i)
-
     # Creación de jugadores
     print("¿Cuál es tu nombre?")
     jugador = Jugador(input(), list(), partida)
@@ -46,20 +43,20 @@ if __name__ == "__main__":
         print(ficha)
     sleep(1)
 
-    print(f"\nEstas son las fichas de {bot1.nombre}")
-    for ficha in bot1.fichas:
-        print(ficha)
-    sleep(1)
+    # print(f"\nEstas son las fichas de {bot1.nombre}")
+    # for ficha in bot1.fichas:
+    #     print(ficha)
+    # sleep(1)
 
-    print(f"\nEstas son las fichas de {bot2.nombre}")
-    for ficha in bot2.fichas:
-        print(ficha)
-    sleep(1)
+    # print(f"\nEstas son las fichas de {bot2.nombre}")
+    # for ficha in bot2.fichas:
+    #     print(ficha)
+    # sleep(1)
 
-    print(f"\nEstas son las fichas de {bot3.nombre}")
-    for ficha in bot3.fichas:
-        print(ficha)
-    sleep(1)
+    # print(f"\nEstas son las fichas de {bot3.nombre}")
+    # for ficha in bot3.fichas:
+    #     print(ficha)
+    # sleep(1)
 
     # Se asignan los turnos de los jugadores, teniendo en cuenta que empieza el que tenga
     # el doble seis, el resto se eligen aleatoriamente
@@ -73,14 +70,23 @@ if __name__ == "__main__":
     print("")
 
     jugador_inicial = partida.turnos.popleft()
-    print(f"{jugador_inicial.nombre} puso el doble seis\n")
-    doble_seis = jugador_inicial.fichas.pop()
-    partida.turnos.append(jugador_inicial)
-    partida.colocadas.append(doble_seis)
+    print(f"Turno de {jugador_inicial.nombre}\n")
+    print(f"{jugador_inicial.nombre} hizo su jugada\n")
 
-    while partida.verificar_ganador() is None:
+    partida.turnos.append(jugador_inicial)
+    partida.colocadas.append(jugador_inicial.fichas.pop())
+    sleep(3)
+
+    while True:
+
+        ganador = partida.verificar_ganador()
+        if ganador != None:
+            print(f"¡{ganador.nombre} ha ganado!")
+            break
+
         partida.imprimir_colocadas()
         jugador_en_turno = partida.cambio_de_turno()
 
         print(f"Turno de {jugador_en_turno.nombre}\n")
         jugador_en_turno.poner_ficha()
+        sleep(3)

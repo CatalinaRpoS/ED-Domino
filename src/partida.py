@@ -11,7 +11,7 @@ class Partida:
         self.turnos = deque()
 
     def asignar_turnos(self):
-        jugadores = self.jugadores
+        jugadores = self.jugadores.copy()
         for jugador in self.jugadores:
             minimo = 0
             maximo = 6
@@ -21,10 +21,13 @@ class Partida:
 
                 if jugador.fichas[medio].id == 28:
                     self.turnos.append(jugador)
+
                     jugadores.remove(jugador)
                     self.turnos.append(random.choice(jugadores))
+
                     jugadores.remove(self.turnos[-1])
                     self.turnos.append(random.choice(jugadores))
+
                     jugadores.remove(self.turnos[-1])
                     self.turnos.append(jugadores[0])
                     return "¡Los turnos han sido asignados!"
