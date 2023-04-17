@@ -8,7 +8,7 @@ from pyfiglet import figlet_format
 if __name__ == "__main__":
 
     # Bienvenida al juego para los jugadores
-    bienvenida = figlet_format("Super Domino", font="colossal")
+    bienvenida = figlet_format("S u p e r\nD o m i n o", font="colossal")
     print(bienvenida)
     sleep(2)
     
@@ -21,6 +21,9 @@ if __name__ == "__main__":
         for j in range(i, 7):
             partida.fichas.append(Ficha(str(i), str(j), contador))
             contador += 1
+
+    for i in partida.fichas:
+        print(i)
 
     # Creación de jugadores
     print("¿Cuál es tu nombre?")
@@ -78,5 +81,6 @@ if __name__ == "__main__":
     while partida.verificar_ganador() is None:
         partida.imprimir_colocadas()
         jugador_en_turno = partida.cambio_de_turno()
+
         print(f"Turno de {jugador_en_turno.nombre}\n")
         jugador_en_turno.poner_ficha()
