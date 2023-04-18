@@ -17,7 +17,7 @@ class Jugador:
             print(f"{contador}. {ficha}", sep="  ")
             contador += 1
 
-        print("#--------------------------------------------------")
+        print("--------------------------------------------------")
         print("")
 
         ultima_ficha = None

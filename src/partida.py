@@ -55,7 +55,6 @@ class Partida:
         return jugador_en_turno
 
     def verificar_ganador(self):
-        
         if self.contador == 4:
             suma_minima = []
             for jugador in self.jugadores:
@@ -63,22 +62,26 @@ class Partida:
                 suma_minima.append(sum(lista_ids))
             return self.jugadores[suma_minima.index(min(suma_minima))]
 
-        else:        
+        else:
             for jugador in self.jugadores:
                 if len(jugador.fichas) == 0:
                     return jugador
         return None
 
-
     def imprimir_colocadas(self):
 
-        print("Fichas en juego:")
-
-        for ficha in self.colocadas:
-            print(ficha, end="  ")
+        print("\nFichas en juego:\n")
+        colocadas = ""
+        for i in range(len(self.colocadas)):
+            if i == 7 or i == 14 or i == 21:
+                colocadas = colocadas + " ... "
+            colocadas = colocadas + self.colocadas[i].__str__() + " "
+            if i == 6 or i == 13 or i == 20:
+                colocadas = colocadas + " ... \n\n"
+        print(colocadas)
 
         print("")
-        print("#--------------------------------------------------")
+        print("--------------------------------------------------")
         print("")
 
     def __str__(self):
