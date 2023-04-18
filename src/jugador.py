@@ -57,8 +57,9 @@ class Jugador:
         while True:
 
             if input("¿Deseas pasar el turno? (S / N): ") == "S":
+                self.partida.contador += 1
                 return
-
+            self.partida.contador = 0
             posicion = int(input("Ingresa la ficha que quieres colocar: "))
 
             if len(self.fichas) < posicion < 1:

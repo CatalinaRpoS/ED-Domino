@@ -43,20 +43,20 @@ if __name__ == "__main__":
         print(ficha)
     sleep(1)
 
-    # print(f"\nEstas son las fichas de {bot1.nombre}")
-    # for ficha in bot1.fichas:
-    #     print(ficha)
-    # sleep(1)
+    print(f"\nEstas son las fichas de {bot1.nombre}")
+    for ficha in bot1.fichas:
+        print(ficha)
+    sleep(1)
 
-    # print(f"\nEstas son las fichas de {bot2.nombre}")
-    # for ficha in bot2.fichas:
-    #     print(ficha)
-    # sleep(1)
+    print(f"\nEstas son las fichas de {bot2.nombre}")
+    for ficha in bot2.fichas:
+        print(ficha)
+    sleep(1)
 
-    # print(f"\nEstas son las fichas de {bot3.nombre}")
-    # for ficha in bot3.fichas:
-    #     print(ficha)
-    # sleep(1)
+    print(f"\nEstas son las fichas de {bot3.nombre}")
+    for ficha in bot3.fichas:
+        print(ficha)
+    sleep(1)
 
     # Se asignan los turnos de los jugadores, teniendo en cuenta que empieza el que tenga
     # el doble seis, el resto se eligen aleatoriamente
@@ -80,6 +80,7 @@ if __name__ == "__main__":
     while True:
 
         ganador = partida.verificar_ganador()
+
         if ganador != None:
             print(f"¡{ganador.nombre} ha ganado!")
             break

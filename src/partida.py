@@ -9,6 +9,7 @@ class Partida:
         self.fichas = fichas
         self.colocadas = deque()
         self.turnos = deque()
+        self.contador = 0
 
     def asignar_turnos(self):
         jugadores = self.jugadores.copy()
@@ -54,10 +55,20 @@ class Partida:
         return jugador_en_turno
 
     def verificar_ganador(self):
-        for jugador in self.jugadores:
-            if len(jugador.fichas) == 0:
-                return jugador
+        
+        if self.contador == 4:
+            suma_minima = []
+            for jugador in self.jugadores:
+                lista_ids = [ficha.id for ficha in jugador.fichas]
+                suma_minima.append(sum(lista_ids))
+            return self.jugadores[suma_minima.index(min(suma_minima))]
+
+        else:        
+            for jugador in self.jugadores:
+                if len(jugador.fichas) == 0:
+                    return jugador
         return None
+
 
     def imprimir_colocadas(self):
 

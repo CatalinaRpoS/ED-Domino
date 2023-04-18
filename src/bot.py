@@ -62,26 +62,31 @@ class Bot:
                 ficha.voltear_ficha()
                 self.partida.colocadas.appendleft(ficha)
                 self.fichas.pop(i)
+                self.partida.contador = 0
                 print(f"{self.nombre} ha realizado su jugada")
                 return
             elif ficha_2 == cabeza:
                 self.partida.colocadas.appendleft(ficha)
                 self.fichas.pop(i)
+                self.partida.contador = 0
                 print(f"{self.nombre} ha realizado su jugada")
                 return
             elif ficha_1 == cola:
                 self.partida.colocadas.append(ficha)
                 self.fichas.pop(i)
+                self.partida.contador = 0
                 print(f"{self.nombre} ha realizado su jugada")
                 return
             elif ficha_2 == cola:
                 ficha.voltear_ficha()
                 self.partida.colocadas.append(ficha)
                 self.fichas.pop(i)
+                self.partida.contador = 0
                 print(f"{self.nombre} ha realizado su jugada")
                 return
-
+            
         print(f"{self.nombre} pasa el turno")
+        self.partida.contador += 1
         return
 
     def __str__(self):
