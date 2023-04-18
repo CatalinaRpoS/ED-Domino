@@ -25,9 +25,9 @@ if __name__ == "__main__":
     # Creación de jugadores
     print("¿Cuál es tu nombre?")
     jugador = Jugador(input(), list(), partida)
-    bot1 = Bot("Miller", list(), partida)
-    bot2 = Bot("Carolina", list(), partida)
-    bot3 = Bot("Tomás", list(), partida)
+    bot1 = Bot("Bender", list(), partida)
+    bot2 = Bot("ChatGPT", list(), partida)
+    bot3 = Bot("Wall-E", list(), partida)
 
     # Se añaden los jugadores a la partida
     partida.jugadores.append(jugador)
@@ -81,14 +81,14 @@ if __name__ == "__main__":
 
     while True:
 
+        partida.imprimir_colocadas()
         ganador = partida.verificar_ganador()
 
         if ganador != None:
             print("\nEl juego ha terminado")
             print(f"¡{ganador.nombre} ha ganado!\n")
             break
-
-        partida.imprimir_colocadas()
+        
         jugador_en_turno = partida.cambio_de_turno()
 
         print(f"Turno de {jugador_en_turno.nombre}\n")
