@@ -17,7 +17,7 @@ class Jugador:
             print(f"{contador}. {ficha}", sep="  ")
             contador += 1
 
-        print("--------------------------------------------------")
+        print("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
         print("")
 
         ultima_ficha = None
@@ -44,43 +44,57 @@ class Jugador:
         jugadaDoble = list(filter(lambda ficha: ficha.cara[0] == cola or ficha.cara[0] == cabeza, fichasDobles))
 
         if len(jugadaDoble) == 2:
-            if input("Tienes la oportunidad de hacer una jugada doble, ¿Quieres realizarla? (S / N):") == "S":
-                for ficha in jugadaDoble:
-                    if ficha.cara[0] == cola:
-                        self.partida.colocadas.append(ficha)
-                    else:
-                        self.partida.colocadas.appendleft(ficha)
-                    self.fichas.remove(ficha)
-                print("Acabas de realizar tu jugada")
-                return
+            while True:
+                opcion = input("Tienes la oportunidad de hacer una jugada doble, ¿Quieres realizarla? (S / N): ")
+                if opcion == "S" or opcion == "s":
+                    for ficha in jugadaDoble:
+                        if ficha.cara[0] == cola:
+                            self.partida.colocadas.append(ficha)
+                        else:
+                            self.partida.colocadas.appendleft(ficha)
+                        self.fichas.remove(ficha)
+                    print("Acabas de realizar tu jugada")
+                    return
+                elif opcion == "N" or opcion == "n":
+                    print("¡Entendido! Puedes mirar otras opciones")
+                    break
+                else:
+                    print("¡La opción que ingresaste no es válida! Por favor intenta otra vez")
 
         while True:
-
-            if input("¿Deseas pasar el turno? (S / N): ") == "S":
+            opcion = input("¿Deseas pasar el turno? (S / N): ")
+            if opcion == "S" or opcion == "s":
                 self.partida.contador += 1
                 return
-            self.partida.contador = 0
-            posicion = int(input("Ingresa la ficha que quieres colocar: "))
+            elif opcion == "N" or opcion == "n":
+                self.partida.contador = 0
 
-            if len(self.fichas) < posicion < 1:
-                print("La ficha que seleccionaste no existe, por favor intenta otra vez")
-                continue
+                try:
+                    posicion = int(input("Ingresa la ficha que quieres colocar: "))
+                except:
+                    print("Recuerda que debes ingresar un número entero, por favor intenta otra vez")
+                    continue
 
-            ficha = self.fichas[posicion - 1]
-            ficha_1 = ficha.cara[0]
-            ficha_2 = ficha.cara[1]
+                if len(self.fichas) < posicion < 1:
+                    print("La ficha que seleccionaste no existe, por favor intenta otra vez")
+                    continue
 
-            if ficha_1 == cabeza or ficha_1 == cola:
-                break
-            elif ficha_2 == cabeza or ficha_2 == cola:
-                break
+                ficha = self.fichas[posicion - 1]
+                ficha_1 = ficha.cara[0]
+                ficha_2 = ficha.cara[1]
+
+                if ficha_1 == cabeza or ficha_1 == cola:
+                    break
+                elif ficha_2 == cabeza or ficha_2 == cola:
+                    break
+                else:
+                    print("La jugada que deseas hacer no es válida, por favor intenta otra vez")
             else:
-                print("La jugada que deseas hacer no es válida, por favor intenta otra vez")
+                print("¡La opción que ingresaste no es válida! Por favor intenta otra vez")
 
         while True:
-
             posicion = input("¿Deseas colocar la ficha al inicio o al final? (I / F): ")
-            if posicion == "I":
+            if posicion == "I" or opcion == "i":
                 if ficha_1 == cabeza or ficha_2 == cabeza:
                     if ficha_2 != cabeza:
                         ficha.voltear_ficha()
@@ -92,7 +106,7 @@ class Jugador:
                     print("No puedes poner la ficha en este lugar")
                     continue
 
-            elif posicion == "F":
+            elif posicion == "F" or opcion == "f":
                 if ficha_1 == cola or ficha_2 == cola:
                     if ficha_1 != cola:
                         ficha.voltear_ficha()

@@ -23,8 +23,15 @@ if __name__ == "__main__":
             contador += 1
 
     # Creación de jugadores
-    print("¿Cuál es tu nombre?")
-    jugador = Jugador(input(), list(), partida)
+    while True:
+        print("¿Cuál es tu nombre?")
+        nombre = input()
+        if nombre.strip() != "":
+            jugador = Jugador(nombre, list(), partida)
+            break
+        else:
+            print("Por favor ingresa un nombre con el que podamos identificarte")
+
     bot1 = Bot("Bender", list(), partida)
     bot2 = Bot("ChatGPT", list(), partida)
     bot3 = Bot("Wall-E", list(), partida)
@@ -37,6 +44,7 @@ if __name__ == "__main__":
 
     # Se asignan las fichas a los jugadores
     print(partida.asignar_fichas())
+    sleep(2)
 
     print(f"\nEstas son tus fichas, {jugador.nombre}")
     for ficha in jugador.fichas:
@@ -65,7 +73,7 @@ if __name__ == "__main__":
     print("El orden de los turnos es:")
     for i in range(len(partida.turnos)):
         print(f"{i + 1}. {partida.turnos[i].nombre}")
-        sleep(1)
+        sleep(2)
 
     print("")
     print("¡Empecemos a jugar!")
