@@ -10,7 +10,7 @@ if __name__ == "__main__":
     # Bienvenida al juego para los jugadores
     bienvenida = figlet_format("S u p e r\nD o m i n o", font="colossal")
     print(bienvenida)
-    sleep(2)
+    sleep(1.5)
     
     # Creación de la partida
     partida = Partida(list(), list())

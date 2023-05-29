@@ -12,40 +12,37 @@ class Partida:
         self.contador = 0
 
     def asignar_turnos(self):
-        jugadores = self.jugadores.copy()
-        for jugador in self.jugadores:
+        for i in range(len(self.jugadores)):
             minimo = 0
             maximo = 6
 
+            # El jugador que tiene el doble seis comienza con el primer
+            # turno, los demás se asignan aleatoriamente
             while minimo <= maximo:
                 medio = (minimo + maximo) // 2
 
-                if jugador.fichas[medio].id == 28:
-                    self.turnos.append(jugador)
-
-                    jugadores.remove(jugador)
-                    self.turnos.append(random.choice(jugadores))
-
-                    jugadores.remove(self.turnos[-1])
-                    self.turnos.append(random.choice(jugadores))
-
-                    jugadores.remove(self.turnos[-1])
-                    self.turnos.append(jugadores[0])
+                if self.jugadores[i].fichas[medio].id == 28:
+                    self.turnos.append(self.jugadores[i])
+                    self.turnos.append(self.jugadores[i-1])
+                    self.turnos.append(self.jugadores[i-2])
+                    self.turnos.append(self.jugadores[i-3])
                     return "¡Los turnos han sido asignados!"
 
-                elif jugador.fichas[medio].id < 28:
+                elif self.jugadores[i].fichas[medio].id < 28:
                     minimo = medio + 1
                 else:
                     maximo = medio - 1
         return "Los turnos no pudieron asignarse"
 
     def asignar_fichas(self):
-        fichas = self.fichas
-        for jugador in self.jugadores:
-            jugador.fichas = random.sample(fichas, 7)
-            jugador.fichas.sort(key=lambda x: x.id)
-            for ficha in jugador.fichas:
-                fichas.remove(ficha)
+        indices = [0, 1, 2, 3]
+
+        for i in range(0, len(self.fichas), 4):
+            random.shuffle(indices)
+            self.jugadores[indices[0]].fichas.append(self.fichas[i])
+            self.jugadores[indices[1]].fichas.append(self.fichas[i+1])
+            self.jugadores[indices[2]].fichas.append(self.fichas[i+2])
+            self.jugadores[indices[3]].fichas.append(self.fichas[i+3])
 
         return "¡Las fichas se repartieron!"
 
