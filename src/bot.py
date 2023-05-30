@@ -51,6 +51,7 @@ class Bot:
                     self.partida.colocadas.appendleft(ficha)
                 self.fichas.remove(ficha)
             print(f"{self.nombre} ha realizado su jugada")
+            print(f"{self.nombre} tiene {len(self.fichas)} fichas")
             return
 
         for i in range(len(self.fichas) - 1, -1, -1):
@@ -64,18 +65,21 @@ class Bot:
                 self.fichas.pop(i)
                 self.partida.contador = 0
                 print(f"{self.nombre} ha realizado su jugada")
+                print(f"{self.nombre} tiene {len(self.fichas)} fichas")
                 return
             elif ficha_2 == cabeza:
                 self.partida.colocadas.appendleft(ficha)
                 self.fichas.pop(i)
                 self.partida.contador = 0
                 print(f"{self.nombre} ha realizado su jugada")
+                print(f"{self.nombre} tiene {len(self.fichas)} fichas")
                 return
             elif ficha_1 == cola:
                 self.partida.colocadas.append(ficha)
                 self.fichas.pop(i)
                 self.partida.contador = 0
                 print(f"{self.nombre} ha realizado su jugada")
+                print(f"{self.nombre} tiene {len(self.fichas)} fichas")
                 return
             elif ficha_2 == cola:
                 ficha.voltear_ficha()
@@ -83,9 +87,11 @@ class Bot:
                 self.fichas.pop(i)
                 self.partida.contador = 0
                 print(f"{self.nombre} ha realizado su jugada")
+                print(f"{self.nombre} tiene {len(self.fichas)} fichas")
                 return
             
         print(f"{self.nombre} pasa el turno")
+        print(f"{self.nombre} tiene {len(self.fichas)} fichas")
         self.partida.contador += 1
         return
 
