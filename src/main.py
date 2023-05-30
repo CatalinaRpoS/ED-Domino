@@ -43,7 +43,7 @@ if __name__ == "__main__":
     partida.jugadores.append(bot3)
 
     # Se asignan las fichas a los jugadores
-    print(partida.asignar_fichas())
+    print("\n", partida.asignar_fichas(), sep="")
     sleep(2)
 
     print(f"\nEstas son tus fichas, {jugador.nombre}")
@@ -81,16 +81,18 @@ if __name__ == "__main__":
 
     jugador_inicial = partida.turnos.popleft()
     print(f"Turno de {jugador_inicial.nombre}\n")
-    print(f"{jugador_inicial.nombre} hizo su jugada\n")
-
+    print(f"{jugador_inicial.nombre} hizo su jugada")
+    
     partida.turnos.append(jugador_inicial)
     partida.colocadas.append(jugador_inicial.fichas.pop())
+    print(f"{jugador_inicial.nombre} tiene {len(jugador_inicial.fichas)} fichas")
     sleep(3)
 
     while True:
 
         partida.imprimir_colocadas()
         ganador = partida.verificar_ganador()
+        sleep(1.5)
 
         if ganador != None:
             print("\nEl juego ha terminado")
